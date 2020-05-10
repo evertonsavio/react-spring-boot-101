@@ -10,5 +10,16 @@
 git branch nomedobranch
 ```  
 ### Para trocar de branch: 
-git checkout nomedobranch
-git status
+```git checkout nomedobranch```   
+
+### Para adicionar as mudancas   
+```git add . ```   
+### Para Commit   
+```git commit -m 'Mensagem'   
+### Para Push   
+```git push```   
+### Para voltar pro master e dar merge nos branch  
+```git checkout master```  
+```git pull```     
+```git merge nomedobranch```   
+```git push```   

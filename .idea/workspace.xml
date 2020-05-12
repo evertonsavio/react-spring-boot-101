@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7f18d816-45b7-48d4-969b-f45367e76c0b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/KanbanFullStack/src/main/java/evertonsavio/dev/kanbanfullstack/domain/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/KanbanFullStack/src/main/java/evertonsavio/dev/kanbanfullstack/domain/Project.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KanbanFullStack/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/KanbanFullStack/src/main/resources/application.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1bocVjY67s8x0D3ujLGt6JqPZM5" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/KanbanFullStack" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7f18d816-45b7-48d4-969b-f45367e76c0b" name="Default Changelist" comment="" />
+      <created>1589301912578</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1589301912578</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="496" y="109" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1589301961207">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="496" y="109" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1536.834/1920.-211.1920.1050@0.0.1536.834" timestamp="1589301961207" />
+    <state x="549" y="175" key="FileChooserDialogImpl" timestamp="1589302113318">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="549" y="175" key="FileChooserDialogImpl/0.0.1536.834/1920.-211.1920.1050@0.0.1536.834" timestamp="1589302113318" />
+  </component>
+</project>

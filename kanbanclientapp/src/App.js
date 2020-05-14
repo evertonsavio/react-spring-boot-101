@@ -10,6 +10,7 @@ import store from './store';
 
 //yarn add redux@4.0.0 react-redux@5.0.7 redux-thunk@2.3.0
 //yarn add axios@0.18.0
+//yarn add classnames
 
 function App() {
   return (

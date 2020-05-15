@@ -14,7 +14,6 @@ store = createStore(
 );
 
 export default store;
-
 /* if (window.navigator.userAgent.includes('Chrome')) {
   store = createStore(
     rootReducer,

@@ -37,6 +37,18 @@ public class Project {
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date updated_At;
 
+    //INCLUINDO OS RELACIONAMENTOS, fetch esta disponivel assim que possivel//
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "project") // CASCATE (Se deletar o projeto deleta childs backlog e projectTak)
+    private Backlog backlog;
+
+    public Backlog getBacklog() {
+        return backlog;
+    }
+    public void setBacklog(Backlog backlog) {
+        this.backlog = backlog;
+    }
+    ////////////////////////////////
+
     public Long getId() {
         return id;
     }

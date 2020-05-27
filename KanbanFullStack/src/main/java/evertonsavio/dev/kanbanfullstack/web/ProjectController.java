@@ -43,11 +43,13 @@ public class ProjectController {
         Project project = projectService.findProjectByIdentifier(projectId);
         return new ResponseEntity<Project>(project, HttpStatus.OK);
     }
+
     @CrossOrigin
     @GetMapping("/all")
     public Iterable<Project> getAllProjects(){
         return projectService.findAllProjects();
     }
+
     @DeleteMapping("/{projectId}")
     public ResponseEntity<?> deleteProject(@PathVariable String projectId){
         projectService.deleteProjectByIdentifier(projectId);

@@ -10,23 +10,17 @@ import java.util.Date;
 @Entity
 public class Project {
 
-    public Project() {
-    //Hibernate requer construtor vazio
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @NotBlank(message = "Nome e necessario!")
+    @NotBlank(message = "Project name is required")
     private String projectName;
-    @NotBlank(message = "Node do Identificador Necessario!")
-    @Size(min=4, max=5, message = "Usar de 4 a 5 caracteres")
+    @NotBlank(message ="Project Identifier is required")
+    @Size(min=4, max=5, message = "Please use 4 to 5 characters")
     @Column(updatable = false, unique = true)
     private String projectIdentifier;
-    @NotBlank(message = "Nao pode ser deixado em branco")
+    @NotBlank(message = "Project description is required")
     private String description;
-
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date start_date;
     @JsonFormat(pattern = "yyyy-mm-dd")
@@ -37,17 +31,12 @@ public class Project {
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date updated_At;
 
-    //INCLUINDO OS RELACIONAMENTOS, fetch esta disponivel assim que possivel//
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "project") // CASCATE (Se deletar o projeto deleta childs backlog e projectTak)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "project")
+    //
     private Backlog backlog;
 
-    public Backlog getBacklog() {
-        return backlog;
+    public Project() {
     }
-    public void setBacklog(Backlog backlog) {
-        this.backlog = backlog;
-    }
-    ////////////////////////////////
 
     public Long getId() {
         return id;
@@ -113,36 +102,22 @@ public class Project {
         this.updated_At = updated_At;
     }
 
+    public Backlog getBacklog() {
+        return backlog;
+    }
+
+    public void setBacklog(Backlog backlog) {
+        this.backlog = backlog;
+    }
+
     @PrePersist
     protected void onCreate(){
         this.created_At = new Date();
     }
+
     @PreUpdate
     protected void onUpdate(){
         this.updated_At = new Date();
     }
+
 }
-
-//A anotação @Entity é utilizada para informar que uma classe também é uma entidade.
-// A partir disso, a JPA estabelecerá a ligação entre a entidade e uma tabela de mesmo nome no banco de dados,
-// onde os dados de objetos desse tipo poderão ser persistidos. A anotação @Entity ainda pode receber um parâmetro: name.
-// Assim, ao invés de utilizar o nome da classe para referenciar a entidade no momento de criar uma consulta,
-// por exemplo, você deverá referenciar o nome especificado nesse parâmetro.
-
-//@Entity
-//public class Pessoa {
-//    @Id
-//    private Long id;
-//    private String nome;
-    //getters e setters omitidos...
-//}
-
-//@PrePersist
-//The @PrePersist annotation is used to specify a callback method that fires before an entity is persisted.
-//        See the JPA callbacks section for more info.
-//@PreRemove
-//The @PreRemove annotation is used to specify a callback method that fires before an entity is removed.
-//        See the JPA callbacks section for more info.
-//@PreUpdate
-//The @PreUpdate annotation is used to specify a callback method that fires before an entity is updated.
-//        See the JPA callbacks section for more info.

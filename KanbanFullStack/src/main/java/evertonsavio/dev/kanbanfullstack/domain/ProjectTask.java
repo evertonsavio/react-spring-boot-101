@@ -1,5 +1,7 @@
 package evertonsavio.dev.kanbanfullstack.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
@@ -7,53 +9,29 @@ import java.util.Date;
 @Entity
 public class ProjectTask {
 
-    public ProjectTask() {
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(updatable = false)
     private String projectSequence;
-    @NotBlank(message = "Incluir sumario")
+    @NotBlank(message = "Please include a project summary")
     private String summary;
     private String acceptanceCriteria;
     private String status;
     private Integer priority;
-    private Date dueData;
-
+    private Date dueDate;
     //ManyToOne with Backlog
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
+    @JoinColumn(name="backlog_id", updatable = false, nullable = false)
+    @JsonIgnore
+    private Backlog backlog;
 
     @Column(updatable = false)
     private String projectIdentifier;
-
     private Date create_At;
     private Date update_At;
 
-    @PrePersist
-    protected void onCreate(){
-        this.create_At = new Date();
-    }
-    @PreUpdate
-    protected void onUpdate(){
-        this.update_At = new Date();
-    }
-
-    @Override
-    public String toString() {
-        return "ProjectTask{" +
-                "id=" + id +
-                ", projectSequence='" + projectSequence + '\'' +
-                ", summary='" + summary + '\'' +
-                ", acceptanceCriteria='" + acceptanceCriteria + '\'' +
-                ", status='" + status + '\'' +
-                ", priority=" + priority +
-                ", dueData=" + dueData +
-                ", projectIdentifier='" + projectIdentifier + '\'' +
-                ", create_At=" + create_At +
-                ", update_At=" + update_At +
-                '}';
+    public ProjectTask() {
     }
 
     public Long getId() {
@@ -104,12 +82,12 @@ public class ProjectTask {
         this.priority = priority;
     }
 
-    public Date getDueData() {
-        return dueData;
+    public Date getDueDate() {
+        return dueDate;
     }
 
-    public void setDueData(Date dueData) {
-        this.dueData = dueData;
+    public void setDueDate(Date dueDate) {
+        this.dueDate = dueDate;
     }
 
     public String getProjectIdentifier() {
@@ -134,5 +112,40 @@ public class ProjectTask {
 
     public void setUpdate_At(Date update_At) {
         this.update_At = update_At;
+    }
+
+    public Backlog getBacklog() {
+        return backlog;
+    }
+
+    public void setBacklog(Backlog backlog) {
+        this.backlog = backlog;
+    }
+
+    @PrePersist
+    protected void onCreate(){
+        this.create_At = new Date();
+    }
+
+    @PreUpdate
+    protected void onUpdate(){
+        this.update_At = new Date();
+    }
+
+    @Override
+    public String toString() {
+        return "ProjectTask{" +
+                "id=" + id +
+                ", projectSequence='" + projectSequence + '\'' +
+                ", summary='" + summary + '\'' +
+                ", acceptanceCriteria='" + acceptanceCriteria + '\'' +
+                ", status='" + status + '\'' +
+                ", priority=" + priority +
+                ", dueDate=" + dueDate +
+                ", backlog=" + backlog +
+                ", projectIdentifier='" + projectIdentifier + '\'' +
+                ", create_At=" + create_At +
+                ", update_At=" + update_At +
+                '}';
     }
 }

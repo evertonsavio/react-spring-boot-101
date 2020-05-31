@@ -23,7 +23,7 @@ public class UserService {
             newUser.setPassword(bCryptPasswordEncoder.encode(newUser.getPassword()));
             //Username has to be unique (exception)
             newUser.setUsername(newUser.getUsername());
-
+            newUser.setConfirmPassword("");
             // Make sure that password and confirmPassword match
             // We don't persist or show the confirmPassword
             return userRepository.save(newUser);

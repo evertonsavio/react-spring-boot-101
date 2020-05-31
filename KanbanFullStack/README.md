@@ -47,7 +47,7 @@ e na classe principal add:
 	}
 ``` 
   
-3. Criar as rotas no control no UserController e add a rota de registro ao security.  
+3. Criar as rotas no controller "UserController" e add a rota de registro ao security.  
 
 ```
 .antMatchers("api/users/**").permitAll()

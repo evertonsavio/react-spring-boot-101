@@ -2,9 +2,11 @@ package evertonsavio.dev.kanbanfullstack.services;
 
 import evertonsavio.dev.kanbanfullstack.domain.Backlog;
 import evertonsavio.dev.kanbanfullstack.domain.Project;
+import evertonsavio.dev.kanbanfullstack.domain.User;
 import evertonsavio.dev.kanbanfullstack.exceptions.ProjectIdException;
 import evertonsavio.dev.kanbanfullstack.repositories.BacklogRepository;
 import evertonsavio.dev.kanbanfullstack.repositories.ProjectRepository;
+import evertonsavio.dev.kanbanfullstack.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,9 +19,17 @@ public class ProjectService {
     @Autowired
     private BacklogRepository backlogRepository;
 
-    public Project saveOrUpdateProject(Project project){
+    @Autowired
+    private UserRepository userRepository;
+
+    public Project saveOrUpdateProject(Project project, String username){
 
         try{
+
+            User user = userRepository.findByUsername(username);
+
+            project.setUsers(user);
+            project.setProjectLeader(user.getUsername());
             project.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
 
             if(project.getId() == null){

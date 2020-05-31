@@ -49,7 +49,7 @@ public class ProjectTaskService {
         //INITIAL priority when priority null
 
         //INITIAL status when status is null
-        if (projectTask.getStatus() == "" || projectTask.getStatus() == null) {
+        if (projectTask.getPriority() == 0 || projectTask.getStatus() == null) {
             projectTask.setStatus("TO_DO");
         }
 

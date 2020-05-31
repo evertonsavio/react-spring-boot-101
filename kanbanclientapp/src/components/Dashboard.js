@@ -6,11 +6,11 @@ import {getProjects} from '../actions/projectActions';
 import PropTypes from 'prop-types';
 
 class Dashboard extends Component {
-  componentDidMount() {
-    this.props.getProjects();
+  componentDidMount () {
+    this.props.getProjects ();
   }
 
-  render() {
+  render () {
     const {projects} = this.props.project;
 
     return (
@@ -24,7 +24,7 @@ class Dashboard extends Component {
 
               <br />
               <hr />
-              {projects.map((project) => (
+              {projects.map (project => (
                 <ProjectItem key={project.id} project={project} />
               ))}
             </div>
@@ -40,8 +40,8 @@ Dashboard.propTypes = {
   getProjects: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   project: state.project,
 });
 
-export default connect(mapStateToProps, {getProjects})(Dashboard);
+export default connect (mapStateToProps, {getProjects}) (Dashboard);

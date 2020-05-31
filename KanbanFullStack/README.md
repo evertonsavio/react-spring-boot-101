@@ -52,6 +52,14 @@ e na classe principal add:
 ```
 .antMatchers("api/users/**").permitAll()
 ```  
+  
+* Criacao de Error Handles para lidar com erros de usuarios duplicados. @Unique  
+  
+* Criacao do package validator para validar o password.  
+  
+  
+  
+
 
 
   

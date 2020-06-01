@@ -4,6 +4,7 @@ import evertonsavio.dev.kanbanfullstack.domain.Backlog;
 import evertonsavio.dev.kanbanfullstack.domain.Project;
 import evertonsavio.dev.kanbanfullstack.domain.User;
 import evertonsavio.dev.kanbanfullstack.exceptions.ProjectIdException;
+import evertonsavio.dev.kanbanfullstack.exceptions.ProjectNotFoundException;
 import evertonsavio.dev.kanbanfullstack.repositories.BacklogRepository;
 import evertonsavio.dev.kanbanfullstack.repositories.ProjectRepository;
 import evertonsavio.dev.kanbanfullstack.repositories.UserRepository;
@@ -48,29 +49,29 @@ public class ProjectService {
         }
     }
 
-    public Project findProjectByIdentifier(String projectId){
+    public Project findProjectByIdentifier(String projectId, String username){
 
         Project project = projectRepository.findByProjectIdentifier(projectId.toUpperCase());
 
         if (project == null){
             throw new ProjectIdException("Project "+ projectId +" does not existis");
         }
+        //Principal e Project leader the same?
+        if(!project.getProjectLeader().equals(username)){
+            throw new ProjectNotFoundException("Project Not found in your account!");
+        }
 
         return project;
     }
 
-    public Iterable<Project> findAllProjects(){
-        return projectRepository.findAll();
+    public Iterable<Project> findAllProjects(String username){
+        return projectRepository.findAllByProjectLeader(username);
     }
 
-    public void deleteProjectByIdentifier(String projectId){
+    public void deleteProjectByIdentifier(String projectId, String username){
 
-        Project project = projectRepository.findByProjectIdentifier(projectId.toUpperCase());
-        
-        if (project == null){
-            throw new ProjectIdException("Can not delete "+ projectId +" because does not existis");
-        }
-        projectRepository.delete(project);
+
+        projectRepository.delete(findProjectByIdentifier(projectId, username));
     }
 
 }

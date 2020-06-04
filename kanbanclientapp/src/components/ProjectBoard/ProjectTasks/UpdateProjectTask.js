@@ -33,9 +33,11 @@ class UpdateProjectTask extends Component {
     this.props.getProjectTask (backlog_id, pt_id, this.props.history);
   }
 
-  componentWillReceiveProps (nextProps) {
-    if (nextProps.errors) {
-      this.setState ({errors: nextProps.errors});
+  componentDidUpdate (prevProps) {
+    if (prevProps.errors !== this.props.errors) {
+      this.setState ({
+        errors: this.props.errors,
+      });
     }
 
     const {
@@ -48,7 +50,7 @@ class UpdateProjectTask extends Component {
       dueDate,
       projectIdentifier,
       create_At,
-    } = nextProps.project_task;
+    } = this.props.project_task;
 
     this.setState ({
       id,

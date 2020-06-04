@@ -22,7 +22,32 @@ class UpdateProject extends Component {
     this.onSubmit = this.onSubmit.bind (this);
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentDidUpdate (prevProps) {
+    if (prevProps.errors !== this.props.errors) {
+      this.setState ({
+        errors: this.props.errors,
+      });
+    }
+    const {
+      id,
+      projectName,
+      projectIdentifier,
+      description,
+      start_date,
+      end_date,
+    } = this.props.project;
+
+    this.setState ({
+      id,
+      projectName,
+      projectIdentifier,
+      description,
+      start_date,
+      end_date,
+    });
+  }
+
+  /*   componentWillReceiveProps (nextProps) {
     if (nextProps.errors) {
       this.setState ({errors: nextProps.errors});
     }
@@ -43,7 +68,7 @@ class UpdateProject extends Component {
       start_date,
       end_date,
     });
-  }
+  } */
 
   componentDidMount () {
     const {id} = this.props.match.params;

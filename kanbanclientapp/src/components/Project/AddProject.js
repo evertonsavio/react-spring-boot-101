@@ -22,9 +22,11 @@ class AddProject extends Component {
   }
 
   //life cycle hooks
-  componentWillReceiveProps (nextProps) {
-    if (nextProps.errors) {
-      this.setState ({errors: nextProps.errors});
+  componentDidUpdate (prevProps) {
+    if (prevProps.errors !== this.props.errors) {
+      this.setState ({
+        errors: this.props.errors,
+      });
     }
   }
 

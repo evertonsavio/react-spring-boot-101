@@ -1,31 +1,31 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import {deleteProjectTask} from '../../../actions/backlogActions';
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { deleteProjectTask } from "../../../actions/backlogActions";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 class ProjectTask extends Component {
-  onDeleteClick (backlog_id, pt_id) {
-    this.props.deleteProjectTask (backlog_id, pt_id);
+  onDeleteClick(backlog_id, pt_id) {
+    this.props.deleteProjectTask(backlog_id, pt_id);
   }
-  render () {
-    const {project_task} = this.props;
+  render() {
+    const { project_task } = this.props;
     let priorityString;
     let priorityClass;
 
     if (project_task.priority === 1) {
-      priorityClass = 'bg-danger text-light';
-      priorityString = 'HIGH';
+      priorityClass = "bg-danger text-light";
+      priorityString = "HIGH";
     }
 
     if (project_task.priority === 2) {
-      priorityClass = 'bg-warning text-light';
-      priorityString = 'MEDIUM';
+      priorityClass = "bg-warning text-light";
+      priorityString = "MEDIUM";
     }
 
     if (project_task.priority === 3) {
-      priorityClass = 'bg-info text-light';
-      priorityString = 'LOW';
+      priorityClass = "bg-info text-light";
+      priorityString = "LOW";
     }
 
     return (
@@ -39,7 +39,9 @@ class ProjectTask extends Component {
             {project_task.acceptanceCriteria}
           </p>
           <Link
-            to={`/updateProjectTask/${project_task.projectIdentifier}/${project_task.projectSequence}`}
+            to={`/updateProjectTask/${project_task.projectIdentifier}/${
+              project_task.projectSequence
+            }`}
             className="btn btn-primary"
           >
             View / Update
@@ -47,7 +49,7 @@ class ProjectTask extends Component {
 
           <button
             className="btn btn-danger ml-4"
-            onClick={this.onDeleteClick.bind (
+            onClick={this.onDeleteClick.bind(
               this,
               project_task.projectIdentifier,
               project_task.projectSequence
@@ -62,6 +64,9 @@ class ProjectTask extends Component {
 }
 
 ProjectTask.propTypes = {
-  deleteProjectTask: PropTypes.func.isRequired,
+  deleteProjectTask: PropTypes.func.isRequired
 };
-export default connect (null, {deleteProjectTask}) (ProjectTask);
+export default connect(
+  null,
+  { deleteProjectTask }
+)(ProjectTask);

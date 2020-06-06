@@ -1,16 +1,16 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {deleteProject} from '../../actions/projectActions';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { deleteProject } from "../../actions/projectActions";
 
 class ProjectItem extends Component {
   onDeleteClick = id => {
-    this.props.deleteProject (id);
+    this.props.deleteProject(id);
   };
 
-  render () {
-    const {project} = this.props;
+  render() {
+    const { project } = this.props;
     return (
       <div className="container">
         <div className="card card-body bg-light mb-3">
@@ -37,7 +37,7 @@ class ProjectItem extends Component {
 
                 <li
                   className="list-group-item delete"
-                  onClick={this.onDeleteClick.bind (
+                  onClick={this.onDeleteClick.bind(
                     this,
                     project.projectIdentifier
                   )}
@@ -54,7 +54,10 @@ class ProjectItem extends Component {
 }
 
 ProjectItem.propTypes = {
-  deleteProject: PropTypes.func.isRequired,
+  deleteProject: PropTypes.func.isRequired
 };
 
-export default connect (null, {deleteProject}) (ProjectItem);
+export default connect(
+  null,
+  { deleteProject }
+)(ProjectItem);
